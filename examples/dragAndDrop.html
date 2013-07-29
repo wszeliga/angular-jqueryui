@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Example of drag and drop</title>
+    
+    <script src="/scripts/jquery-2.0.3.js"></script>
+    <script src="/scripts/angular.js"></script>
+    <script src="/scripts/jquery-ui-1.10.3.js"></script>
+    <style>
+        .drag{height: 200px;width: 200px; background-color: #ffdead; float: left;}
+        .drop{height: 300px;width: 300px; background-color: #dcdcdc;float: left;}
+        .red{ border: solid 2px red;}
+        .blue{ border: solid 2px blue;}
+    </style>
+</head>
+    <body data-ng-app="dragAndDrop" data-ng-controller="dragAndDropController">
+        <div class="drag red ui-widget-content" data-draggable="" data-drag-options="dragOptions">
+            <h2>{{model.name}}</h2>
+            <p>{{model.question}}</p>
+            <input type="text" data-ng-model="model.value"/>
+        </div>
+        <div class="drop blue ui-widget-header" data-droppable="" data-drop-options="dropOptions">
+
+        </div>
+        <script src="/app/jqueryUI.js"></script>
+        <script src="/app/directives/draggable.js"></script>
+        <script src="/app/directives/droppable.js"></script>
+        <script>
+            (function() {
+                var app = angular.module('dragAndDrop', ['jqueryUI']);
+
+                app.controller('dragAndDropController', function($scope) {
+                    $scope.model = {
+                        name: 'What \'s in a name',
+                        value: 42,
+                        question: 'What is the answer to the Ultimate Question of Life, The Universe, and Everything?'
+                    };
+
+                    $scope.dragOptions = {
+                        opacity: 0.7,
+                        cursor: 'move',
+                        revert: 'invalid'
+                    };
+
+                    $scope.dropOptions = {
+                        activeClass: 'ui-state-hover',
+                        hoverClass: 'ui-state-active'
+                    };
+                });
+            }());
+        </script>
+    </body>
+</html>
