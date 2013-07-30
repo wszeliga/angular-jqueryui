@@ -14,14 +14,20 @@
     </style>
 </head>
     <body data-ng-app="dragAndDrop" data-ng-controller="dragAndDropController">
+        <div>
+            <ul>
+                <li><label for="name">Name:</label><input id="name" type="text" data-ng-model="model.name"/></li>
+                <li><label for="question">Question:</label><input id="question" type="text" data-ng-model="model.question"/></li>
+                <li><label for="value">Value:</label><input id="value" type="text" data-ng-model="model.value"/></li>
+            </ul>
+        </div>
+
         <div class="drag red ui-widget-content" data-draggable="" data-drag-options="dragOptions">
             <h2>{{model.name}}</h2>
             <p>{{model.question}}</p>
             <input type="text" data-ng-model="model.value"/>
         </div>
-        <div class="drop blue ui-widget-header" data-droppable="" data-drop-options="dropOptions">
-
-        </div>
+        <div class="drop blue ui-widget-header" data-droppable="" data-drop-options="dropOptions"></div>
         <script src="/app/jqueryUI.js"></script>
         <script src="/app/directives/draggable.js"></script>
         <script src="/app/directives/droppable.js"></script>
